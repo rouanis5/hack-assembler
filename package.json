@@ -1,0 +1,15 @@
+{
+  "name": "hack-assembler-ts",
+  "module": "index.ts",
+  "description": "Hack machine assembler using Typescript (bun runtime)",
+  "type": "module",
+  "scripts": {
+    "start": "bun run index.ts"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
