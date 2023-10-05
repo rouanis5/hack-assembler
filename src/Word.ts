@@ -1,7 +1,7 @@
 import { number, z } from 'zod'
 import { Bit } from './Bit'
 
-export abstract class Word {
+export class Word {
   private size: number
   private bits: Bit[] = []
 
@@ -13,8 +13,21 @@ export abstract class Word {
     }
   }
 
-  private getRealIndex(index: number): number {
-    return this.size - index - 1
+  replace(bit: Bit, index: number): void {
+    this.getBit(index)
+    this.bits[index] = bit
+  }
+
+  extract(start: number = 0, end: number = this.size): Word {
+    const word = new Word(end - start)
+    word.bits = this.bits.slice(start, end)
+    return word
+  }
+
+  insertAt(start: number = 0, word: Word): void {
+    word.bits.forEach((bit, index) => {
+      this.bits[start + index] = bit
+    })
   }
 
   getSize(): number {
@@ -22,15 +35,15 @@ export abstract class Word {
   }
 
   getBit(index: number): Bit {
-    const bit = this.bits[this.getRealIndex(index)]
+    const bit = this.bits[index]
     if (!bit) {
-      throw new Error()
+      throw new Error('unkown index')
     }
 
     return bit
   }
 
-  toBinary(line: string): void {
+  parseBinary(line: string): void {
     line = line.trim()
     if (line === '' || line.length >= this.size) {
       throw new Error('Non valid size')
@@ -38,16 +51,14 @@ export abstract class Word {
 
     line
       .split('')
-      .forEach((bit, index) =>
-        this.getBit(line.length - index - 1).toBinary(bit)
-      )
+      .reverse()
+      .forEach((bit, index) => this.getBit(index).toBinary(bit))
   }
 
   toString(): string {
-    let str = ''
-    for (let i = 0; i < this.size; i++) {
-      str += this.getBit(i).toString()
-    }
-    return str
+    return this.bits
+      .map((bit) => bit.toString())
+      .reverse()
+      .join()
   }
 }
