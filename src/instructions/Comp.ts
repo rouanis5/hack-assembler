@@ -15,13 +15,13 @@ export class Comp extends Word {
 
   constructor(word: string) {
     super(7)
-    this.zd = this.getBit(0)
-    this.nd = this.getBit(1)
-    this.za = this.getBit(2)
-    this.na = this.getBit(3)
-    this.add = this.getBit(4)
-    this.no = this.getBit(5)
     this.m = this.getBit(6)
+    this.zd = this.getBit(5)
+    this.nd = this.getBit(4)
+    this.za = this.getBit(3)
+    this.na = this.getBit(2)
+    this.add = this.getBit(1)
+    this.no = this.getBit(0)
 
     if (word.includes('M')) {
       this.m.turnOn()
@@ -33,6 +33,7 @@ export class Comp extends Word {
       case '0':
         this.zd.turnOn()
         this.za.turnOn()
+        this.add.turnOn()
         break
       case '1':
         // this.parseBinary('111111') // not readable
@@ -86,7 +87,7 @@ export class Comp extends Word {
         this.add.turnOn()
         this.no.turnOn()
         break
-      case 'A+1': // ! something might be wrong here !!
+      case 'A+1':
         this.zd.turnOn()
         this.nd.turnOn()
         this.na.turnOn()
