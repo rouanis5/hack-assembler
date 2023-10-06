@@ -22,7 +22,7 @@ export class InstructionC extends Instruction {
     dest = out[0] ?? ''
     value = out[1] ?? ''
 
-    if (dest === '0') {
+    if (value === '') {
       ;[dest, value] = [value, dest]
     }
 

@@ -13,6 +13,10 @@ export class Dest extends Word {
     this.m = this.getBit(1)
     this.a = this.getBit(2)
 
+    if (word.split('').find((char) => !['A', 'M', 'D'].includes(char))) {
+      throw new Error('Unexpected dest, Received: ' + word)
+    }
+
     if (word.includes('A')) {
       this.a.turnOn()
     }
