@@ -6,7 +6,7 @@ export class Word {
   private bits: Bit[] = []
 
   constructor(size: number) {
-    this.size = z.number().gt(0).lte(16).step(1).parse(number)
+    this.size = z.number().gt(0).lte(16).step(1).parse(size)
 
     for (let i = 0; i < this.size; i++) {
       this.bits.push(new Bit())
@@ -46,7 +46,7 @@ export class Word {
   parseBinary(line: string): void {
     line = line.trim()
     if (line === '' || line.length >= this.size) {
-      throw new Error('Non valid size')
+      throw new Error('Non valid size, received: ' + line.length)
     }
 
     line
@@ -55,10 +55,21 @@ export class Word {
       .forEach((bit, index) => this.getBit(index).toBinary(bit))
   }
 
+  parseDecimal(line: string): void {
+    line = line.trim()
+    if (line === '' || line.length >= this.size) {
+      throw new Error('Non valid size, received: ' + line.length)
+    }
+
+    // convert number to bianry
+    line = parseInt(line).toString(2)
+    this.parseBinary(line)
+  }
+
   toString(): string {
     return this.bits
       .map((bit) => bit.toString())
       .reverse()
-      .join()
+      .join('')
   }
 }

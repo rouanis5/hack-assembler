@@ -2,7 +2,7 @@ import { Instruction } from './instructions/Instruction'
 import { InstructionFactory } from './InstructionFactory'
 
 export class Assembler {
-  instructions: Instruction[]
+  private instructions: Instruction[]
   private instructionFactory: InstructionFactory
 
   constructor(text: string, instructionFactory: InstructionFactory) {
@@ -29,6 +29,6 @@ export class Assembler {
   public toBinaryText(): String {
     return this.instructions
       .map((instruction) => instruction.toString())
-      .join('\n')
+      .join('\r\n')
   }
 }

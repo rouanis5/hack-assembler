@@ -8,9 +8,10 @@ export class InstructionFactory {
   insert(line: string) {
     if (line[0] === '@') {
       this.instruction = new InstructionA(line)
+    } else {
+      this.instruction = new InstructionC(line)
     }
 
-    this.instruction = new InstructionC(line)
     return this
   }
 

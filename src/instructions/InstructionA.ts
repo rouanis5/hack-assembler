@@ -12,6 +12,6 @@ export class InstructionA extends Instruction {
     super()
     this.address = this.extract(0, 15)
     this.getBit(15).turnOff()
-    this.address.parseBinary(line.split('@')[0])
+    this.address.parseDecimal(line.split('@')[1])
   }
 }

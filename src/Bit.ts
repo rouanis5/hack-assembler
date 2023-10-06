@@ -16,7 +16,7 @@ export class Bit {
       return
     }
 
-    throw new Error('invalid bit value: only 0 or 1')
+    throw new Error('invalid bit value: only 0 or 1, received: ' + char)
   }
 
   turnOn(): void {
