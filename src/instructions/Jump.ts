@@ -35,6 +35,7 @@ export class Jump extends Word {
         break
       case 'JLE':
         this.ng.turnOn()
+        this.zr.turnOn()
         break
       case 'JMP':
         this.ps.turnOn()
@@ -42,7 +43,7 @@ export class Jump extends Word {
         this.ng.turnOn()
         break
       default:
-        throw new Error('unkown jump')
+        throw new Error(`unkown jump, Received: ${word}`)
     }
   }
 }

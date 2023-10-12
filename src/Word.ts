@@ -45,7 +45,7 @@ export class Word {
 
   parseBinary(line: string): void {
     line = line.trim()
-    if (line === '' || line.length >= this.size) {
+    if (line === '' || line.length > this.size) {
       throw new Error('Non valid size, received: ' + line.length)
     }
 
