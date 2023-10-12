@@ -2,19 +2,21 @@ import { Instruction } from './instructions/Instruction'
 import { InstructionFactory } from './InstructionFactory'
 
 export class Assembler {
-  private instructions: Instruction[]
-  private instructionFactory: InstructionFactory
+  private instructions: Instruction[] = []
 
-  constructor(text: string, instructionFactory: InstructionFactory) {
-    this.instructionFactory = instructionFactory
+  constructor(private readonly instructionFactory: InstructionFactory) {}
+
+  format(text: string): this {
     const lines = this.parseText(text)
 
     this.instructions = lines.map((line) =>
       this.instructionFactory.insert(line.toString()).build()
     )
+
+    return this
   }
 
-  private parseText(text: String): String[] {
+  private parseText(text: string): string[] {
     return (
       text
         // extract lines
@@ -26,7 +28,7 @@ export class Assembler {
     )
   }
 
-  public toBinaryText(): String {
+  public toBinaryText(): string {
     return this.instructions
       .map((instruction) => instruction.toString())
       .join('\r\n')

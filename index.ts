@@ -1,11 +1,17 @@
+import { App } from './src/App'
 import { Assembler } from './src/Assembler'
 import { InstructionFactory } from './src/InstructionFactory'
 
-const foo = Bun.file('./asm/max/MaxL.asm')
+const pathname = process.argv
+  .find((arg) => arg.startsWith('--path='))
+  ?.split('--path=')[1]
 
-const lines = await foo.text()
+const is2Save = process.argv.find((arg) => arg === '-s' || arg === '--save')
+  ? true
+  : false
 
 const instructionFactory = new InstructionFactory()
-const assembler = new Assembler(lines, instructionFactory)
+const assembler = new Assembler(instructionFactory)
+const app = new App(assembler)
 
-console.log(assembler.toBinaryText())
+app.execute(pathname, is2Save)
