@@ -1,0 +1,94 @@
+[
+  {
+    "label": "SP",
+    "address": 0
+  },
+  {
+    "label": "LCL",
+    "address": 1
+  },
+  {
+    "label": "ARG",
+    "address": 2
+  },
+  {
+    "label": "THIS",
+    "address": 3
+  },
+  {
+    "label": "THAT",
+    "address": 4
+  },
+  {
+    "label": "R0",
+    "address": 0
+  },
+  {
+    "label": "R1",
+    "address": 1
+  },
+  {
+    "label": "R2",
+    "address": 2
+  },
+  {
+    "label": "R3",
+    "address": 3
+  },
+  {
+    "label": "R4",
+    "address": 4
+  },
+  {
+    "label": "R5",
+    "address": 5
+  },
+  {
+    "label": "R6",
+    "address": 6
+  },
+  {
+    "label": "R7",
+    "address": 7
+  },
+  {
+    "label": "R8",
+    "address": 8
+  },
+  {
+    "label": "R9",
+    "address": 9
+  },
+  {
+    "label": "R10",
+    "address": 10
+  },
+  {
+    "label": "R11",
+    "address": 11
+  },
+  {
+    "label": "R12",
+    "address": 12
+  },
+  {
+    "label": "R13",
+    "address": 13
+  },
+  {
+    "label": "R14",
+    "address": 14
+  },
+  {
+    "label": "R15",
+    "address": 15
+  },
+  {
+    "label": "SCREEN",
+    "address": 16384
+  },
+  {
+    "label": "KBD",
+    "address": 24576
+  }
+]
